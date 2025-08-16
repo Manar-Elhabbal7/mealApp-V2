@@ -35,7 +35,7 @@ class CategoryGridItem extends StatelessWidget {
             ),
           ),
         );
-      },
+      },  
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(16),
       child: Container(
