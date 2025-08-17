@@ -1,30 +1,60 @@
 import 'package:flutter/material.dart';
 
 class Filter extends StatefulWidget {
-  const Filter({super.key});
+  final bool glutenFree;
+  final bool vegan;
+  final bool vegetarian;
+  final bool lactoseFree;
+
+  const Filter({
+    super.key,
+    required this.glutenFree,
+    required this.vegan,
+    required this.vegetarian,
+    required this.lactoseFree,
+  });
 
   @override
   State<Filter> createState() => _FilterState();
 }
 
-enum FilterOptions {
-  glutenFree,
-  lactoseFree,
-  vegetarian,
-  vegan
-}
 class _FilterState extends State<Filter> {
-  bool _glutenFree = false;
-  bool _vegan = false;
-  bool _vegetarian = false;
-  bool _lactoseFree = false;
+  late bool _glutenFree;
+  late bool _vegan;
+  late bool _vegetarian;
+  late bool _lactoseFree;
 
   @override
+  void initState() {
+    super.initState();
+    _glutenFree = widget.glutenFree;
+    _vegan = widget.vegan;
+    _vegetarian = widget.vegetarian;
+    _lactoseFree = widget.lactoseFree;
+  }
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Filters'),
+        actions: [
+          IconButton(
+            icon :const Icon(Icons.save),
+            tooltip: 'Save',
+            onPressed: () {
+              final selectedFilters = {
+                'glutenFree': _glutenFree,
+                'lactoseFree': _lactoseFree,
+                'vegan': _vegan,
+                'vegetarian': _vegetarian,
+              };
+              Navigator.of(context).pop(selectedFilters);
+            },
+
+          )
+        ],
       ),
+      
       body: Column(
         children: [
           SwitchListTile(

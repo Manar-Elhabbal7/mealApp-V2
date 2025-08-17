@@ -9,11 +9,13 @@ class CategoryScreen extends StatelessWidget {
     required this.onToggleFav,
     required this.isMealFav,
     required this.favMeals,
+    required this.filteredMeals,
   });
 
   final void Function(Meal meal) onToggleFav;
   final bool Function(Meal meal) isMealFav;
   final List<Meal> favMeals;
+  final List<Meal> filteredMeals;
 
   @override
   Widget build(BuildContext context) {
