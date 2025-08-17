@@ -37,7 +37,6 @@ class MealItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // جِب لستة المفضلة من provider
     final favMeals = ref.watch(favoritesProvider);
     final isFav = favMeals.contains(meal);
 
