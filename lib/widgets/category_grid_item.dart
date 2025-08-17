@@ -5,34 +5,30 @@ import 'package:meal_app/widgets/category.dart';
 import 'package:meal_app/widgets/meal.dart';
 
 class CategoryGridItem extends StatelessWidget {
-  const CategoryGridItem({
+    const CategoryGridItem({
     super.key,
     required this.category,
     required this.onToggleFav,
     required this.isMealFav,
     required this.favMeals,
-
+    required this.meals
   });
 
   final CategoryC category;
   final void Function(Meal meal) onToggleFav;
   final bool Function(Meal meal) isMealFav;
   final List<Meal> favMeals;
-  
-  final List<Meal> meals= dummyMeals;
+  final List<Meal> meals;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        final List<Meal> filteredMeals = dummyMeals
-            .where((meal) => meal.categories.contains(category.id))
-            .toList();
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (ctx) => MealsScreen(
               title: category.title,
-              meals: filteredMeals,
+              meals: meals,
               onToggleFav: onToggleFav,
               isMealFav: isMealFav,
             ),

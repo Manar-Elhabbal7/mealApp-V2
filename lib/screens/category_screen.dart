@@ -9,7 +9,7 @@ class CategoryScreen extends StatelessWidget {
     required this.onToggleFav,
     required this.isMealFav,
     required this.favMeals,
-    required this.filteredMeals,
+    required this.filteredMeals, 
   });
 
   final void Function(Meal meal) onToggleFav;
@@ -33,6 +33,9 @@ class CategoryScreen extends StatelessWidget {
             onToggleFav: onToggleFav,
             isMealFav: isMealFav,
             favMeals: favMeals,
+            meals: filteredMeals
+                .where((meal) => meal.categories.contains(category.id))
+                .toList(), 
           ),
       ],
     );
