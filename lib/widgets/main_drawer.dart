@@ -34,7 +34,7 @@ class DrawerC extends StatelessWidget {
                 ),
                 const SizedBox(width: 20,),
                 Text(
-                  'Cooking Up!',
+                  'Meal Time',
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                   ),
