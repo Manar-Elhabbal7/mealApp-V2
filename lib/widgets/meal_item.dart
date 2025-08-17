@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meal_app/Providers/fav_provider.dart';
 import 'package:meal_app/widgets/meal.dart';
 
-class MealItem extends StatelessWidget {
+class MealItem extends ConsumerWidget {
   const MealItem({
     super.key,
     required this.meal,
     required this.onSelectMeal,
-    required this.onToggleFav,
+    required this.onToggleFavourite,
     required this.isFav,
   });
 
   final Meal meal;
   final VoidCallback onSelectMeal;
-  final void Function(Meal meal) onToggleFav;
   final bool isFav;
+  
+  final Function(Meal meal)  onToggleFavourite;
 
   String get complexityText {
     switch (meal.complexity) {
@@ -38,7 +41,7 @@ class MealItem extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       margin: const EdgeInsets.all(10),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -107,7 +110,10 @@ class MealItem extends StatelessWidget {
                         ),
                         IconButton(
                           icon: Icon(isFav ? Icons.star : Icons.star_border, color: isFav ? Colors.amber : null),
-                          onPressed: () => onToggleFav(meal),
+                          
+                          onPressed: () => {
+                            ref.read(favoritesProvider.notifier).toggleFavorite(meal),
+                          },
                         ),
                       ],
                     ),
@@ -183,7 +189,11 @@ class MealItem extends StatelessWidget {
                   ),
                   IconButton(
                     icon: Icon(isFav ? Icons.star : Icons.star_border, color: isFav ? Colors.amber : null),
-                    onPressed: () => onToggleFav(meal),
+                    //togle fav logic
+                    onPressed: () => {
+                      ref.read(favoritesProvider.notifier).toggleFavorite(meal),
+                      //show message 
+                    },
                   ),
                 ],
               );

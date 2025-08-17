@@ -5,13 +5,14 @@ class MealDetails extends StatelessWidget {
   const MealDetails({
     super.key,
     required this.meal,
-    required this.onToggleFav,
+    required this.onToggleFavorite,
     required this.isFav,
   });
 
   final Meal meal;
-  final void Function(Meal meal) onToggleFav;
   final bool isFav;
+  
+  final void Function(Meal meal) onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class MealDetails extends StatelessWidget {
         title: Text(meal.title),
         actions: [
           IconButton(
-            onPressed: () => onToggleFav(meal),
+            onPressed: () => {
+              onToggleFavorite(meal),
+            },
             icon: Icon(isFav ? Icons.star : Icons.star_border),
           ),
         ],

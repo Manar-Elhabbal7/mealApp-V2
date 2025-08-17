@@ -22,7 +22,7 @@ class MealsScreen extends StatelessWidget {
       MaterialPageRoute(
         builder: (ctx) => MealDetails(
           meal: meal,
-          onToggleFav: onToggleFav,
+          onToggleFavorite: onToggleFav,
           isFav: isMealFav(meal),
         ),
       ),
@@ -45,7 +45,7 @@ class MealsScreen extends StatelessWidget {
               return MealItem(
                 meal: m,
                 onSelectMeal: () => _openDetails(context, m),
-                onToggleFav: onToggleFav,
+                onToggleFavourite: onToggleFav,
                 isFav: isMealFav(m),
               );
             },

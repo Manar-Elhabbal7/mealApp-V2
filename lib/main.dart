@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/screens/tabs_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MealApp());
+  runApp(const ProviderScope(child: MealApp()));
 }
 
 class MealApp extends StatelessWidget {

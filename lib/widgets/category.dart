@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 
-
 class CategoryC {
   final String id;
   final String title;
@@ -12,5 +11,4 @@ class CategoryC {
     required this.title,
     required this.color,
   });
-
 }
