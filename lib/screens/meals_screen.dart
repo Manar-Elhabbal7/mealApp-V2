@@ -45,8 +45,8 @@ class MealsScreen extends StatelessWidget {
               return MealItem(
                 meal: m,
                 onSelectMeal: () => _openDetails(context, m),
-                onToggleFavourite: onToggleFav,
-                isFav: isMealFav(m),
+                //onToggleFavourite: onToggleFav,
+                //isFav: isMealFav(m),
               );
             },
           );
